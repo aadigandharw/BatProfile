@@ -1,73 +1,89 @@
-# Welcome to your Lovable project
+📌 Frappe Development App
 
-## Project info
+This repository contains my Frappe Framework custom application that I built as part of learning and practical work in Frappe development.
+It includes a custom DocType implementation completed following the official Frappe tutorial.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+🚀 About This Project
 
-## How can I edit this code?
+I’ve developed this app to learn how to build apps and DocTypes in the Frappe framework, including:
 
-There are several ways of editing your application.
+✔️ Setting up the Frappe bench environment
+✔️ Creating a custom Frappe application
+✔️ Building at least one custom DocType
+✔️ Adding fields and configuring the DocType structure
+✔️ Understanding how DocTypes define data models in Frappe
 
-**Use Lovable**
+This project is based on the Frappe official tutorial for creating a DocType.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+🧱 What is Frappe?
 
-Changes made via Lovable will be committed automatically to this repo.
+Frappe is a full-stack web application framework built with Python and JavaScript. It uses DocTypes as the core building blocks — a DocType represents your data model, database structure, and UI form definition.
 
-**Use your preferred IDE**
+📋 Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+✔️ Custom DocType creation
+✔️ Frappe app setup
+✔️ Bench configuration and developer setup
+✔️ Basic fields and metadata definitions
+✔️ Ready to install in a Frappe/ERPNext site
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+📦 Installation Instructions
 
-Follow these steps:
+To use this app in your Frappe development environment:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Clone this repository
+git clone https://github.com/aadigandharw/aadigandharw-1525462c.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Go to your bench directory
 
-# Step 3: Install the necessary dependencies.
-npm i
+Navigate to your frappe-bench folder:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+cd path/to/frappe-bench
 
-**Edit a file directly in GitHub**
+3. Install the custom app
+bench --site your-site-name install-app aadigandharw-1525462c
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+4. Restart bench
+bench restart
 
-**Use GitHub Codespaces**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+After this, you should see your module and custom DocType available in the Frappe desk.
 
-## What technologies are used for this project?
+📄 How I Built This App
 
-This project is built with:
+I followed the official Frappe documentation steps:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Enabled developer mode in bench.
 
-## How can I deploy this project?
+Created a new Frappe app using bench new-app.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Generated a custom DocType via Frappe Desk UI.
 
-## Can I connect a custom domain to my Lovable project?
+Defined fields and metadata for the DocType structure.
 
-Yes, you can!
+Installed the app on a Frappe site.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Verified that my new DocType works with forms and list views.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+🧠 What I Learned
+
+✔️ How to create and structure a Frappe app
+✔️ How to define custom DocTypes
+✔️ How Frappe uses DocType metadata to build forms and database tables
+✔️ How to install and use custom apps in a Frappe site
+
+📚 Reference / Tutorial
+
+This app was implemented with help from the official Frappe tutorial “Create a DocType” on the Frappe docs site.
+
+🙌 Next Steps (Optional)
+
+You can extend this app by:
+✔️ Adding server-side logic in Python
+✔️ Writing client scripts for form behavior
+✔️ Creating Reports and API endpoints
+✔️ Adding Tests
+
+📞 Contact
+
+If you’d like to discuss improvements or collaborate, feel free to message me! ❤️
