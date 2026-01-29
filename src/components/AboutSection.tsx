@@ -38,10 +38,18 @@ const AboutSection = () => {
             className="space-y-6"
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a passionate <span className="text-primary font-semibold">Full Stack Developer</span> currently 
-              working at <span className="text-foreground font-semibold">YashviTech IT Solution Pvt Ltd</span>, 
-              where I build robust web applications using React.js, Python, and Django.
+              I’m a passionate{" "}
+              <span className="text-primary font-semibold">Full Stack Developer</span>{" "}
+              and{" "}
+              <span className="text-primary font-semibold">Franchise Owner</span>{" "}
+              at{" "}
+              <span className="text-foreground font-semibold">
+                YashviTech IT Solution Pvt. Ltd.
+              </span>
+              , combining hands-on development with entrepreneurship to build scalable,
+              real-world web solutions using React.js, Python, and Django.
             </p>
+
             <p className="text-lg text-muted-foreground leading-relaxed">
               With a B.Tech in Computer Science from Yugantar Institute of Technology & Management, 
               I specialize in creating scalable solutions with clean code and intuitive user experiences. 

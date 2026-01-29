@@ -4,6 +4,22 @@ import { useRef } from "react";
 import { ExternalLink, Github, Folder } from "lucide-react";
 
 const projects = [
+
+  {
+    title: "Hominex – AI Home Layout Generator",
+    description: "AI-powered platform that generates complete home layouts based on user inputs like plot size, budget, and requirements, focused on affordability and accessibility.",
+    tech: ["React", "Django", "Python", "REST API", "AI Integration"],
+    features: [
+      "AI-based home layout generation using user-defined inputs",
+      "Interactive and user-friendly React frontend with modern UI",
+      "Django backend with REST APIs for layout generation and data handling",
+      "Pre-generated layout templates to explore before custom generation",
+      "Dashboard for users to manage and view generated layouts",
+      "Designed for accessibility, including rural and non-technical users"
+    ],
+    type: "Full Stack",
+  },
+
   {
     title: "Option AlgoTrading",
     description: "Full-stack algorithmic trading platform with broker API integration, authentication, and real-time data processing.",
@@ -24,7 +40,7 @@ const projects = [
       "Material UI components for modern interface",
       "Built Serializers and CRUD APIs",
     ],
-    type: "Live Project",
+    type: "Full Stack",
   },
   {
     title: "ShreeTalk",
@@ -37,6 +53,7 @@ const projects = [
     ],
     type: "Live Project",
     github: "https://github.com/aadigandharw",
+    live:"https://shreetalk.in/"
   },
   {
     title: "Bright Future",
@@ -49,7 +66,7 @@ const projects = [
     ],
     type: "Personal Project",
     github: "https://github.com/aadigandharw",
-    live: "#",
+    live: "https://aadigandharw.github.io/Bright_Future/",
   },
 ];
 

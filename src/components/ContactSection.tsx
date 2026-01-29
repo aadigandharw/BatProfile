@@ -13,16 +13,41 @@ const ContactSection = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Open email client with pre-filled data
-    const mailtoLink = `mailto:aadigandharw22@gmail.com?subject=Portfolio Contact from ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${formData.email}`;
-    window.location.href = mailtoLink;
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbzhuOXdH4KLt2cm1AqZ4_J0ztmbKOOY9TfTB35sMV5gOwUEkT5DDu97-joNYlT5l65GoA/exec",
+      {
+        method: "POST",
+        mode: "no-cors", // 🔥 THIS FIXES CORS
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      }
+    );
+
     toast({
-      title: "Opening email client...",
-      description: "Your email client should open with the message.",
+      title: "Message sent successfully 🚀",
+      description: "Your message has been saved. I’ll get back to you soon!",
     });
-  };
+
+    setFormData({ name: "", email: "", message: "" });
+
+  } catch (error) {
+    toast({
+      title: "Something went wrong ❌",
+      description: "Please try again later.",
+    });
+  }
+};
+
 
   const contactInfo = [
     {

@@ -39,7 +39,7 @@ const HeroSection = () => {
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
           >
             Hi, I'm{" "}
-            <span className="text-gradient glow-text">Aditya</span>
+            <span className="text-gradient glow-text">Aditya Gandharv</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -76,7 +76,8 @@ const HeroSection = () => {
               View My Work
             </motion.a>
             <motion.a
-              href="#contact"
+              href="/Aditya_Gandharv_CV.pdf"
+              download
               className="px-8 py-4 glass rounded-xl font-semibold text-lg border border-primary/30 hover:border-primary/60 transition-colors flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -84,6 +85,7 @@ const HeroSection = () => {
               <Download size={20} />
               Download CV
             </motion.a>
+
           </motion.div>
 
           {/* Social Links */}

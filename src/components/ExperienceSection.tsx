@@ -4,17 +4,33 @@ import { useRef } from "react";
 import { Briefcase, Calendar, MapPin } from "lucide-react";
 
 const experiences = [
+
+  {
+  company: "Eactive Technologies",
+  role: "Software Trainee (Frappe & ERPNext)",
+  period: "Nov 2025 – Feb 2026",
+  location: "Onsite / Hybrid",
+  description: [
+    "Worked on live projects using Frappe Framework and ERPNext",
+    "Developed and customized ERPNext reports, print formats, and forms",
+    "Implemented Client Scripts and Server Scripts for business logic automation",
+    "Handled DocTypes customization, workflows, and validations"
+  ],
+  current: false,
+},
+
+
   {
     company: "YashviTech IT Solution Pvt Ltd",
     role: "Full Stack Developer",
-    period: "May 2025 – Present",
+    period: "May 2025 – Nov 2025",
     location: "Raipur, C.G",
     description: [
       "Building full-stack web applications using React.js, Python, and Django",
       "Working on API integration, responsive UI, and optimizing backend logic",
       "Implemented REST APIs, authentication flows, and database operations",
     ],
-    current: true,
+    current: false,
   },
   {
     company: "Infosys SpringBoard",

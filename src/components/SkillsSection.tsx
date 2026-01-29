@@ -109,7 +109,7 @@ const SkillsSection = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 flex flex-wrap items-center justify-center gap-8"
         >
-          {["React", "Django", "Python", "PostgreSQL", "Git", "JavaScript", "HTML5", "CSS3"].map(
+          {["React", "Django", "Python","JavaScript", "PostgreSQL", "Git", "JavaScript", "HTML5", "CSS3" , "Bootstarp" , "MySql"].map(
             (tech, index) => (
               <motion.div
                 key={tech}
