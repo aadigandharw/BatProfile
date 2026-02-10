@@ -40,8 +40,6 @@ const AboutSection = () => {
             <p className="text-lg text-muted-foreground leading-relaxed">
               I’m a passionate{" "}
               <span className="text-primary font-semibold">Full Stack Developer</span>{" "}
-              and{" "}
-              <span className="text-primary font-semibold">Franchise Owner</span>{" "}
               at{" "}
               <span className="text-foreground font-semibold">
                 YashviTech IT Solution Pvt. Ltd.
