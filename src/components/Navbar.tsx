@@ -24,6 +24,18 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // 🔥 SAFE SCROLL FUNCTION (Works on real mobile)
+  const handleMobileClick = (href: string) => {
+    setIsMobileMenuOpen(false);
+
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 200);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -45,7 +57,10 @@ const Navbar = () => {
               alt="Aditya Gandharv"
               className="w-10 h-10 rounded-full object-cover border-2 border-primary/50"
             />
-            <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-background" style={{ backgroundColor: "hsl(142 71% 45%)" }} />
+            <span
+              className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-background"
+              style={{ backgroundColor: "hsl(142 71% 45%)" }}
+            />
           </div>
           <span className="text-xl font-bold text-gradient hidden sm:block">
             Aditya Gandharv<span className="text-primary">.</span>
@@ -69,7 +84,10 @@ const Navbar = () => {
           <motion.a
             href="#contact"
             className="px-6 py-2.5 bg-gradient-primary text-primary-foreground rounded-lg font-semibold"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px hsl(174 72% 56% / 0.4)" }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 0 30px hsl(174 72% 56% / 0.4)",
+            }}
             whileTap={{ scale: 0.95 }}
           >
             Hire Me
@@ -95,6 +113,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
             className="md:hidden glass mt-4"
           >
             <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
@@ -103,7 +122,10 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   className="text-foreground hover:text-primary transition-colors font-medium py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleMobileClick(link.href);
+                  }}
                 >
                   {link.name}
                 </a>
@@ -111,7 +133,10 @@ const Navbar = () => {
               <a
                 href="#contact"
                 className="px-6 py-3 bg-gradient-primary text-primary-foreground rounded-lg font-semibold text-center mt-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleMobileClick("#contact");
+                }}
               >
                 Hire Me
               </a>
