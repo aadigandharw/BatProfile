@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -48,7 +48,7 @@ const Navbar = () => {
             <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-background" style={{ backgroundColor: "hsl(142 71% 45%)" }} />
           </div>
           <span className="text-xl font-bold text-gradient hidden sm:block">
-            Aditya<span className="text-primary">.</span>
+            Aditya Gandharv<span className="text-primary">.</span>
           </span>
         </motion.a>
 
