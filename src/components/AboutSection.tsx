@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { MapPin, Calendar, Code2, Briefcase } from "lucide-react";
+import Scene3D from "./3d/Scene3D";
+import FloatingParticles from "./3d/FloatingParticles";
+import FloatingShape from "./3d/FloatingGeometry";
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -16,7 +19,14 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="py-32 relative" ref={ref}>
-      <div className="container mx-auto px-6">
+      {/* 3D Background */}
+      <Scene3D cameraPosition={[0, 0, 6]}>
+        <FloatingParticles count={100} spread={12} size={0.025} color="#4dd0c8" speed={0.15} />
+        <FloatingShape position={[-4, 2, -4]} geometry="icosahedron" color="#4dd0c8" scale={0.8} distort={0.2} />
+        <FloatingShape position={[4, -1, -3]} geometry="octahedron" color="#a855f7" scale={0.6} distort={0.4} />
+      </Scene3D>
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -30,7 +40,6 @@ const AboutSection = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -38,7 +47,7 @@ const AboutSection = () => {
             className="space-y-6"
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I’m a passionate{" "}
+              I'm a passionate{" "}
               <span className="text-primary font-semibold">Full Stack Developer</span>{" "}
               at{" "}
               <span className="text-foreground font-semibold">
@@ -47,7 +56,6 @@ const AboutSection = () => {
               , combining hands-on development with entrepreneurship to build scalable,
               real-world web solutions using React.js, Python, and Django.
             </p>
-
             <p className="text-lg text-muted-foreground leading-relaxed">
               With a B.Tech in Computer Science from Yugantar Institute of Technology & Management, 
               I specialize in creating scalable solutions with clean code and intuitive user experiences. 
@@ -60,7 +68,6 @@ const AboutSection = () => {
             </p>
           </motion.div>
 
-          {/* Right Stats */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}

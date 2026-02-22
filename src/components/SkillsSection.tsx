@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import Scene3D from "./3d/Scene3D";
+import FloatingParticles from "./3d/FloatingParticles";
+import FloatingShape from "./3d/FloatingGeometry";
 
 const skillCategories = [
   {
@@ -47,8 +50,13 @@ const SkillsSection = () => {
 
   return (
     <section id="skills" className="py-32 relative" ref={ref}>
-      {/* Background */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+      {/* 3D Background */}
+      <Scene3D cameraPosition={[0, 0, 7]}>
+        <FloatingParticles count={150} spread={14} size={0.03} color="#a855f7" speed={0.15} />
+        <FloatingShape position={[-3, 2, -4]} geometry="sphere" color="#4dd0c8" scale={1} distort={0.5} speed={0.6} />
+        <FloatingShape position={[3, -2, -3]} geometry="icosahedron" color="#a855f7" scale={0.7} distort={0.3} speed={0.8} />
+        <FloatingShape position={[0, 0, -5]} geometry="torusKnot" color="#4dd0c8" scale={0.4} distort={0.2} speed={0.4} />
+      </Scene3D>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -109,8 +117,8 @@ const SkillsSection = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 flex flex-wrap items-center justify-center gap-8"
         >
-          {["React", "Django", "Python","JavaScript", "PostgreSQL", "Git", "JavaScript", "HTML5", "CSS3" , "Bootstarp" , "MySql"].map(
-            (tech, index) => (
+          {["React", "Django", "Python", "JavaScript", "PostgreSQL", "Git", "JavaScript", "HTML5", "CSS3", "Bootstarp", "MySql"].map(
+            (tech) => (
               <motion.div
                 key={tech}
                 whileHover={{ scale: 1.1, y: -5 }}

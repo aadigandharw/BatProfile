@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { GraduationCap, Award, Calendar } from "lucide-react";
+import Scene3D from "./3d/Scene3D";
+import FloatingParticles from "./3d/FloatingParticles";
+import RotatingRing from "./3d/RotatingRing";
 
 const education = [
   {
@@ -36,6 +39,13 @@ const EducationSection = () => {
 
   return (
     <section id="education" className="py-32 relative" ref={ref}>
+      {/* 3D Background */}
+      <Scene3D cameraPosition={[0, 0, 6]}>
+        <FloatingParticles count={80} spread={10} size={0.025} color="#4dd0c8" speed={0.1} />
+        <RotatingRing position={[3, 1, -3]} scale={0.7} speed={0.4} />
+        <RotatingRing position={[-3, -1, -4]} scale={0.5} speed={0.6} color="#a855f7" />
+      </Scene3D>
+
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
