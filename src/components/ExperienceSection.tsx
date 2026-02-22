@@ -2,24 +2,24 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Briefcase, Calendar, MapPin } from "lucide-react";
+import Scene3D from "./3d/Scene3D";
+import FloatingParticles from "./3d/FloatingParticles";
+import DNAHelix from "./3d/DNAHelix";
 
 const experiences = [
-
   {
-  company: "Eactive Technologies",
-  role: "Software Trainee (Frappe & ERPNext)",
-  period: "Nov 2025 – Feb 2026",
-  location: "Onsite / Hybrid",
-  description: [
-    "Worked on live projects using Frappe Framework and ERPNext",
-    "Developed and customized ERPNext reports, print formats, and forms",
-    "Implemented Client Scripts and Server Scripts for business logic automation",
-    "Handled DocTypes customization, workflows, and validations"
-  ],
-  current: false,
-},
-
-
+    company: "Eactive Technologies",
+    role: "Software Trainee (Frappe & ERPNext)",
+    period: "Nov 2025 – Feb 2026",
+    location: "Onsite / Hybrid",
+    description: [
+      "Worked on live projects using Frappe Framework and ERPNext",
+      "Developed and customized ERPNext reports, print formats, and forms",
+      "Implemented Client Scripts and Server Scripts for business logic automation",
+      "Handled DocTypes customization, workflows, and validations"
+    ],
+    current: false,
+  },
   {
     company: "YashviTech IT Solution Pvt Ltd",
     role: "Full Stack Developer",
@@ -62,8 +62,12 @@ const ExperienceSection = () => {
 
   return (
     <section id="experience" className="py-32 relative" ref={ref}>
-      {/* Background Gradient */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      {/* 3D Background */}
+      <Scene3D cameraPosition={[0, 0, 7]}>
+        <FloatingParticles count={80} spread={14} size={0.02} color="#a855f7" speed={0.1} />
+        <DNAHelix position={[5, 0, -3]} scale={0.8} />
+        <DNAHelix position={[-5, 0, -4]} scale={0.6} color1="#a855f7" color2="#4dd0c8" />
+      </Scene3D>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -79,9 +83,7 @@ const ExperienceSection = () => {
         </motion.div>
 
         <div className="max-w-3xl mx-auto">
-          {/* Timeline */}
           <div className="relative">
-            {/* Timeline Line */}
             <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary via-accent to-transparent" />
 
             {experiences.map((exp, index) => (
@@ -94,10 +96,8 @@ const ExperienceSection = () => {
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
-                {/* Timeline Dot */}
                 <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 rounded-full bg-primary glow z-10" />
 
-                {/* Content Card */}
                 <div className={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
                   <div className="glass p-6 rounded-2xl hover:border-primary/30 transition-all group">
                     <div className="flex items-start justify-between mb-4">

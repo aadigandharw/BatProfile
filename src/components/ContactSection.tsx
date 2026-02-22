@@ -3,6 +3,10 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import Scene3D from "./3d/Scene3D";
+import FloatingParticles from "./3d/FloatingParticles";
+import WaveGrid from "./3d/WaveGrid";
+import AnimatedSphere from "./3d/AnimatedSphere";
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -14,40 +18,38 @@ const ContactSection = () => {
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbzhuOXdH4KLt2cm1AqZ4_J0ztmbKOOY9TfTB35sMV5gOwUEkT5DDu97-joNYlT5l65GoA/exec",
-      {
-        method: "POST",
-        mode: "no-cors", // 🔥 THIS FIXES CORS
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
-      }
-    );
+    try {
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbzhuOXdH4KLt2cm1AqZ4_J0ztmbKOOY9TfTB35sMV5gOwUEkT5DDu97-joNYlT5l65GoA/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          }),
+        }
+      );
 
-    toast({
-      title: "Message sent successfully 🚀",
-      description: "Your message has been saved. I’ll get back to you soon!",
-    });
+      toast({
+        title: "Message sent successfully 🚀",
+        description: "Your message has been saved. I'll get back to you soon!",
+      });
 
-    setFormData({ name: "", email: "", message: "" });
-
-  } catch (error) {
-    toast({
-      title: "Something went wrong ❌",
-      description: "Please try again later.",
-    });
-  }
-};
-
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Something went wrong ❌",
+        description: "Please try again later.",
+      });
+    }
+  };
 
   const contactInfo = [
     {
@@ -72,11 +74,12 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-32 relative" ref={ref}>
-      {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
-      </div>
+      {/* 3D Background */}
+      <Scene3D cameraPosition={[0, 0, 8]}>
+        <FloatingParticles count={100} spread={12} size={0.03} color="#4dd0c8" speed={0.1} />
+        <WaveGrid color="#4dd0c8" waveSpeed={0.8} waveHeight={0.2} />
+        <AnimatedSphere position={[4, 2, -5]} color="#a855f7" scale={0.8} distort={0.3} />
+      </Scene3D>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -95,7 +98,6 @@ const ContactSection = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -129,7 +131,6 @@ const ContactSection = () => {
               </motion.div>
             ))}
 
-            {/* Social Links */}
             <div className="flex gap-4 pt-4">
               <motion.a
                 href="https://github.com/aadigandharw"
@@ -152,7 +153,6 @@ const ContactSection = () => {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}

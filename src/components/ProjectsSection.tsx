@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ExternalLink, Github, ChevronDown } from "lucide-react";
+import Scene3D from "./3d/Scene3D";
+import FloatingParticles from "./3d/FloatingParticles";
+import FloatingShape from "./3d/FloatingGeometry";
 
 import projectHominex from "@/assets/project-hominex.jpg";
 import projectAlgotrading from "@/assets/project-algotrading.jpg";
@@ -144,7 +147,6 @@ const ProjectCard = ({ project, index, isInView }: { project: typeof projects[0]
       className="glass rounded-2xl hover:border-primary/40 transition-all duration-500 group h-full flex flex-col overflow-hidden relative"
       style={{ perspective: "1000px" }}
     >
-      {/* Glow effect on hover */}
       <motion.div
         className="absolute inset-0 rounded-2xl pointer-events-none"
         animate={{
@@ -155,7 +157,6 @@ const ProjectCard = ({ project, index, isInView }: { project: typeof projects[0]
         transition={{ duration: 0.4 }}
       />
 
-      {/* Project Image */}
       <div className="relative h-48 overflow-hidden">
         <motion.img
           src={project.image}
@@ -166,7 +167,6 @@ const ProjectCard = ({ project, index, isInView }: { project: typeof projects[0]
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
         
-        {/* Floating action buttons */}
         <motion.div
           className="absolute top-3 right-3 flex gap-2"
           animate={{ y: isHovered ? 0 : -10, opacity: isHovered ? 1 : 0.7 }}
@@ -198,7 +198,6 @@ const ProjectCard = ({ project, index, isInView }: { project: typeof projects[0]
           )}
         </motion.div>
 
-        {/* Type badge */}
         <motion.span
           className="absolute bottom-3 left-4 text-xs font-mono px-3 py-1 bg-primary/20 backdrop-blur-md text-primary rounded-full border border-primary/30"
           animate={{ x: isHovered ? 0 : -5, opacity: isHovered ? 1 : 0.8 }}
@@ -207,7 +206,6 @@ const ProjectCard = ({ project, index, isInView }: { project: typeof projects[0]
         </motion.span>
       </div>
 
-      {/* Content */}
       <div className="p-5 flex-1 flex flex-col">
         <motion.h3
           className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300"
@@ -220,7 +218,6 @@ const ProjectCard = ({ project, index, isInView }: { project: typeof projects[0]
           {project.description}
         </p>
 
-        {/* Tech Stack with stagger animation */}
         <div className="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-border/50">
           {project.tech.map((tech, i) => (
             <motion.span
@@ -249,7 +246,12 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-32 relative" ref={ref}>
-      <div className="absolute right-0 top-1/3 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      {/* 3D Background */}
+      <Scene3D cameraPosition={[0, 0, 8]}>
+        <FloatingParticles count={120} spread={16} size={0.025} color="#4dd0c8" speed={0.12} />
+        <FloatingShape position={[-5, 3, -5]} geometry="torusKnot" color="#4dd0c8" scale={0.5} distort={0.2} speed={0.5} />
+        <FloatingShape position={[5, -2, -4]} geometry="torus" color="#a855f7" scale={0.6} distort={0.3} speed={0.7} />
+      </Scene3D>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -273,7 +275,6 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        {/* Show More / Less Button */}
         {projects.length > INITIAL_COUNT && (
           <motion.div
             initial={{ opacity: 0 }}

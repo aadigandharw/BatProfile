@@ -1,15 +1,20 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ChevronDown, Download } from "lucide-react";
+import Scene3D from "./3d/Scene3D";
+import FloatingParticles from "./3d/FloatingParticles";
+import AnimatedSphere from "./3d/AnimatedSphere";
+import RotatingRing from "./3d/RotatingRing";
 
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-      </div>
+      {/* 3D Background */}
+      <Scene3D cameraPosition={[0, 0, 8]}>
+        <FloatingParticles count={300} spread={15} size={0.04} speed={0.2} />
+        <AnimatedSphere position={[-3, 1, -3]} color="#4dd0c8" scale={1.5} distort={0.5} />
+        <AnimatedSphere position={[4, -1, -5]} color="#a855f7" scale={1.2} distort={0.3} />
+        <RotatingRing position={[0, 0, -2]} scale={1.2} speed={0.5} />
+      </Scene3D>
 
       {/* Grid Pattern */}
       <div className="absolute inset-0 opacity-[0.02]" style={{
@@ -85,7 +90,6 @@ const HeroSection = () => {
               <Download size={20} />
               Download CV
             </motion.a>
-
           </motion.div>
 
           {/* Social Links */}
